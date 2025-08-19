@@ -1,0 +1,338 @@
+{
+	"_method_": {},
+	"cs.Progress": {
+		"_ProgressWindow": {
+			"new()": {
+				"Syntax": "**.new**()",
+				"Params": [],
+				"Summary": ""
+			}
+		},
+		"Progress": {
+			"new()": {
+				"Syntax": "**.new**( *name_t* : Text; *options_o* : Object )",
+				"Params": [
+					[
+						"name_t",
+						"Text",
+						"->"
+					],
+					[
+						"options_o",
+						"Object",
+						"->"
+					]
+				],
+				"Summary": ""
+			}
+		}
+	},
+	"_ProgressWindow": {
+		"getId()": {
+			"Syntax": "**.getId**( *name_t* : Text ) : Integer",
+			"Params": [
+				[
+					"name_t",
+					"Text",
+					"->"
+				],
+				[
+					"",
+					"Integer",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"has()": {
+			"Syntax": "**.has**( *name_t* : Text ) : Boolean",
+			"Params": [
+				[
+					"name_t",
+					"Text",
+					"->"
+				],
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"remove()": {
+			"Syntax": "**.remove**( *name_t* : Text )",
+			"Params": [
+				[
+					"name_t",
+					"Text",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"add()": {
+			"Syntax": "**.add**( *name_t* : Text; *id_l* : Integer )",
+			"Params": [
+				[
+					"name_t",
+					"Text",
+					"->"
+				],
+				[
+					"id_l",
+					"Integer",
+					"->"
+				]
+			],
+			"Summary": ""
+		}
+	},
+	"Progress": {
+		"show()": {
+			"Syntax": "**.show**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"setCoordinates()": {
+			"Syntax": "**.setCoordinates**( *horizontalPosition_l* : Integer; *verticalPosition_l* : Integer )",
+			"Params": [
+				[
+					"horizontalPosition_l",
+					"Integer",
+					"->"
+				],
+				[
+					"verticalPosition_l",
+					"Integer",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"hide()": {
+			"Syntax": "**.hide**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"setGlobalAppearance()": {
+			"Syntax": "**.setGlobalAppearance**( *settings_o* : Object )",
+			"Params": [
+				[
+					"settings_o",
+					"Object",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"stop()": {
+			"Syntax": "**.stop**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"set errorEventListener()": {
+			"Syntax": "**.set errorEventListener**( *methodName_t* : Text )",
+			"Params": [
+				[
+					"methodName_t",
+					"Text",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"start()": {
+			"Syntax": "**.start**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"setProgress()": {
+			"Syntax": "**.setProgress**( *value_o* : Object )",
+			"Params": [
+				[
+					"value_o",
+					"Object",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"set progress()": {
+			"Syntax": "**.set progress**( *progress_r* : Real )",
+			"Params": [
+				[
+					"progress_r",
+					"Real",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"get progress()": {
+			"Syntax": "**.get progress**() : Real",
+			"Params": [
+				[
+					"",
+					"Real",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"get errorEventListener()": {
+			"Syntax": "**.get errorEventListener**() : Text",
+			"Params": [
+				[
+					"",
+					"Text",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"set title()": {
+			"Syntax": "**.set title**( *title_t* : Text )",
+			"Params": [
+				[
+					"title_t",
+					"Text",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"get message()": {
+			"Syntax": "**.get message**() : Text",
+			"Params": [
+				[
+					"",
+					"Text",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"set icon()": {
+			"Syntax": "**.set icon**( *icon_g* : Picture )",
+			"Params": [
+				[
+					"icon_g",
+					"Picture",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"get buttonEnabled()": {
+			"Syntax": "**.get buttonEnabled**() : Boolean",
+			"Params": [
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"set stopEventListener()": {
+			"Syntax": "**.set stopEventListener**( *methodName_t* : Text )",
+			"Params": [
+				[
+					"methodName_t",
+					"Text",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"get stopped()": {
+			"Syntax": "**.get stopped**() : Boolean",
+			"Params": [
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"get icon()": {
+			"Syntax": "**.get icon**() : Picture",
+			"Params": [
+				[
+					"",
+					"Picture",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"set buttonTitle()": {
+			"Syntax": "**.set buttonTitle**( *title_t* : Text )",
+			"Params": [
+				[
+					"title_t",
+					"Text",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"get stopEventListener()": {
+			"Syntax": "**.get stopEventListener**() : Text",
+			"Params": [
+				[
+					"",
+					"Text",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"set buttonEnabled()": {
+			"Syntax": "**.set buttonEnabled**( *enabled_b* : Boolean )",
+			"Params": [
+				[
+					"enabled_b",
+					"Boolean",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"get title()": {
+			"Syntax": "**.get title**() : Text",
+			"Params": [
+				[
+					"",
+					"Text",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"set message()": {
+			"Syntax": "**.set message**( *message_t* : Text )",
+			"Params": [
+				[
+					"message_t",
+					"Text",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"get buttonTitle()": {
+			"Syntax": "**.get buttonTitle**() : Text",
+			"Params": [
+				[
+					"",
+					"Text",
+					"<-"
+				]
+			],
+			"Summary": ""
+		}
+	}
+}
