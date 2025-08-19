@@ -1,15 +1,29 @@
-# UIWidget
+# Progress
 
-このコンポーネントはリストボックスや進捗バーなどのUI Widgetに関するクラスを提供します。
+This component provides wrapper methods of 4D's Progress component.
 
-現在は以下のクラスが実装されています：
+#### Sample code
+```4d
+var $i; $max_l : Integer
+var $value_o : Object
+var $progress_o : cs.Progress.Progress
 
-[Event クラス](/src/Documentation/Classes/Event.md "Event class document").
-[Listbox クラス](/src/Documentation/Classes/Listbox.md "Listbox class document").
-[ListboxColumn クラス](/src/Documentation/Classes/ListboxColumn.md "ListboxColumn class document").
-[Progress クラス](/src/Documentation/Classes/Progress.md "Progress class document").
+$progress_o:=cs.Progress.Progress.new("LoopThroughSelection")
+$progress_o.buttonEnabled:=True
+$progress_o.title:="Preparing..."
+$progress_o.progress:=-1
+$progress_o.start()
 
-基底クラス
-[_ActiveWidget クラス](/src/Documentation/Classes/_ActiveWidget.md "_ActiveWidget class document").
-[_StaticWidget クラス](/src/Documentation/Classes/_StaticWidget.md "_StaticWidget class document").
-[_Widget クラス](/src/Documentation/Classes/_Widget.md "_Widget class document").
+$max_l:=100
+$value_o:={}
+For ($i; 1; $max_l)
+  $value_o.progress:=$i/$max_l
+  $value_o.title:="Calculating"
+  $value_o.message:=String($i)+" / "+String($max_l)
+  $progress_o.setProgress($value_o)
+  If ($progress_o.stopped)
+    break
+  End if 
+End for 
+$progress_o.stop()
+```
