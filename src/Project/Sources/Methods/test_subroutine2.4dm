@@ -14,7 +14,7 @@ $max_l:=100
 For ($i; 1; $max_l)
 	$progress_o.setProgress({progress: $i/$max_l; title: "Test Subroutine"; message: String:C10($i)+" / "+String:C10($max_l)})
 	DELAY PROCESS:C323(Current process:C322; 5)
-	If ($progress_o.stopped)
+	If ($progress_o.canceled)
 		break
 	End if 
 End for 

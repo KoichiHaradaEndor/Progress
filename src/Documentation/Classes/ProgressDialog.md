@@ -43,7 +43,7 @@ For ($i; 1; $max_l)
   $value_o.title:="Calculating"
   $value_o.message:=String($i)+" / "+String($max_l)
   $progress_o.setProgress($value_o)
-  If ($progress_o.stopped)
+  If ($progress_o.canceled)
     break
   End if 
 End for 
@@ -89,9 +89,9 @@ $progress_o.buttonTitle:="Stop"
 $buttonTitle_t:=$progress_o.buttonTitle  // Stop
 ```
 
-### .stopped : Boolean
+### .canceled : Boolean
 
-The `stopped` property returns a Boolean value indicating whether the user clicked the stop button. If clicked, it returns True; otherwise, it returns False. This is a read-only attribute.
+The `canceled` property returns a Boolean value indicating whether the user clicked the stop button. If clicked, it returns True; otherwise, it returns False. This is a read-only attribute.
 
 #### Sample code
 
