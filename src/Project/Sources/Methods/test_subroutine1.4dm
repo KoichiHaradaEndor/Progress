@@ -1,6 +1,6 @@
 //%attributes = {}
 /**
-* Run test_subroutine1 first, then run test_subroutine2.
+* Run test_subroutine1.
 * Tests progress window that has the same name can be accessed 
 * from subroutine.
 */
@@ -11,9 +11,9 @@ If (Count parameters:C259=0)
 	
 Else 
 	
-	var $progress_o : cs:C1710.Progress
+	var $progress_o : cs:C1710.ProgressDialog
 	
-	$progress_o:=cs:C1710.Progress.new("test-subroutine")
+	$progress_o:=cs:C1710.ProgressDialog.new("test-subroutine")
 	$progress_o.title:="Test Subroutine"
 	$progress_o.message:="Preparing..."
 	$progress_o.progress:=-1

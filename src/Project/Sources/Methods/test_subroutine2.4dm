@@ -1,14 +1,14 @@
 //%attributes = {}
 /**
-* Run test_subroutine1 first, then run test_subroutine2.
+* Run test_subroutine1.
 * Tests progress windows that has the same name can be accessed 
 * from subroutine.
 */
 
-var $progress_o : cs:C1710.Progress
+var $progress_o : cs:C1710.ProgressDialog
 var $i; $max_l : Integer
 
-$progress_o:=cs:C1710.Progress.new("test-subroutine")
+$progress_o:=cs:C1710.ProgressDialog.new("test-subroutine")
 
 $max_l:=100
 For ($i; 1; $max_l)
