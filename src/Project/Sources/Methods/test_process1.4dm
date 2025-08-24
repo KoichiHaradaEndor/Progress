@@ -1,7 +1,7 @@
 //%attributes = {}
 /**
 * Run test_process1 first, then run test_process2.
-* Tests progress windows that has the same name can be accessed 
+* Tests progress dialog that has the same name can be accessed 
 * from different process.
 */
 
@@ -11,9 +11,9 @@ If (Count parameters:C259=0)
 	
 Else 
 	
-	var $progress_o : cs:C1710.Progress
+	var $progress_o : cs:C1710.ProgressDialog
 	
-	$progress_o:=cs:C1710.Progress.new("test-process")
+	$progress_o:=cs:C1710.ProgressDialog.new("test-process")
 	$progress_o.title:="Test Process"
 	$progress_o.message:="Preparing..."
 	$progress_o.progress:=-1

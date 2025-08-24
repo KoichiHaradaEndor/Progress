@@ -1,5 +1,5 @@
 //%attributes = {}
-var $progress_o : cs:C1710.Progress
+var $progress_o : cs:C1710.ProgressDialog
 var $options_o : Object
 var $options_t : Text
 
@@ -9,11 +9,10 @@ buttonTitle: "停止"; \
 title: "Test Options"; \
 message: "Preparing..."; \
 progress: -1; \
-stopEventListener: ""; \
-errorEventListener: ""\
+stopEventListener: ""\
 }
 
-$progress_o:=cs:C1710.Progress.new("test"; $options_o)
+$progress_o:=cs:C1710.ProgressDialog.new("test"; $options_o)
 
 $options_t:="buttonEnabled: "+String:C10($progress_o.buttonEnabled)+"\n"
 $options_t+="buttonTitle: "+$progress_o.buttonTitle+"\n"
