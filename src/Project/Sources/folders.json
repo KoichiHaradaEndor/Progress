@@ -8,6 +8,7 @@
 	"Test": {
 		"methods": [
 			"funcOnError",
+			"test_2dialogs",
 			"test_basic",
 			"test_options",
 			"test_process1",

@@ -1,30 +1,30 @@
-<!-- ProgressDialogクラスは 4D Progress コンポーネントのラッパーメソッドで構成されていて、進捗ダイアログを表示し、外観や値を制御するために使用します。 -->
-# Progressコンポーネント - ProgressDialog クラス
+<!-- The ProgressDialog class consists of wrapper methods for the 4D Progress component and is used to display progress dialogs and control their appearance and values. -->
+# Progress component - ProgressDialog class
 
-## 説明
+## Description
 
-このクラスは 4D Progress コンポーネントのラッパーメソッドで構成されています。このクラスを使用することで、各進捗ダイアログに名前でアクセスすることができるようになります。結果 progress id を気にすることなく、サブルーチンや他のプロセスからも進捗ダイアログにアクセスすることができます。
+This class consists of wrapper methods for the 4D Progress component. Using this class allows you to access each progress dialog by name. As a result, you can access the progress dialog from subroutines and other processes without having to worry about the progress ID.
 
-## コンストラクタ
+## Constructor
 
 ### cs.Progress.ProgressDialog.new(name : Text{; option : Object})
 
-進捗ダイアログの名前を `name` に渡します。同じ名前を使用してインスタンス化された進捗ダイアログオブジェクトは、サブルーチンや他のプロセスにおいても同じ進捗ダイアログを参照します。
+Pass the name of the progress dialog to `name`. Progress dialog objects instantiated with the same name refer to the same progress dialog in subroutines and other processes.
 
-`option` を使用して進捗ダイアログの表示に関わる設定を行うことができます。以下のプロパティを設定可能です：
+You can use `option` to configure settings related to the display of the progress dialog. The following properties can be set:
 
-|プロパティ名|型|説名|
+|Property Name|Value Type|Description|
 |:---------|:--|:--|
-|buttonEnabled|Boolean|停止ボタンの表示設定。デフォルトは非表示。|
-|buttonTitle|Text|停止ボタンのタイトル (Windows OSのみ有効)|
-|icon|Picture|進捗ダイアログに表示するアイコン|
-|message|Text|進捗ダイアログの詳細メッセージ|
-|progress|Real|進捗バーの値 (-1 または 0~1)|
-|stopEventListener|Text|停止ボタンがクリックされた際に実行されるコールバックメソッド名|
-|title|Text|進捗ダイアログのメインタイトル|
+|buttonEnabled|Boolean|True = Stop button displayed; otherwise, False (default)|
+|buttonTitle|Text|Title of Stop button (Windows OS only)|
+|icon|Picture|Icon of progress dialog|
+|message|Text|Message of progress dialog|
+|progress|Real|Value of progress bar (-1 or 0~1)|
+|stopEventListener|Text|Name of stop method|
+|title|Text|Title of progress dialog|
 
 <a id="constructor-sample-code"></a>
-#### サンプルコード
+#### Sample code
 ```4d
 var $i; $max_l : Integer
 var $value_o : Object
@@ -57,13 +57,13 @@ $option_o:={buttonEnabled: True; title: "Preparing"; progress: -1}
 $progress_o:=cs.Progress.ProgressDialog.new("LoopThroughSelection"; $option_o)
 ```
 
-## 関数・プロパティ
+## Function, Property
 
 ### .buttonEnabled : Boolean
 
-`buttonEnabled` プロパティを使用して停止ボタンの表示・非表示状態を設定します。デフォルトで停止ボタンは表示されません。ボタンを表示するには `True` を設定します。
+Use the `buttonEnabled` property to set whether the stop button is displayed or hidden. By default, the stop button is not displayed. Set it to `True` to display the button.
 
-#### サンプルコード
+#### Sample code
 
 ```4d
 var $enabled_b : Boolean
@@ -75,40 +75,40 @@ $enabled_b:=$progress_o.buttonEnabled  // True
 
 ### .buttonTitle : Text
 
-(このプロパティは Windows OS でのみ意味を持ちます)
+(This property is only meaningful on Windows OS.)
 
-`buttonTitle` プロパティを使用して停止ボタンのタイトル文字列を設定・取得できます。
+You can set and retrieve the title string of the stop button using the `buttonTitle` property.
 
-#### サンプルコード
+#### Sample code
 
 ```4d
 var $buttonTitle_t : Text
 var $progress_o : cs.Progress.ProgressDialog
 $progress_o:=cs.Progress.ProgressDialog.new("LoopThroughSelection")
-$progress_o.buttonTitle:="停止"
-$buttonTitle_t:=$progress_o.buttonTitle  // 停止
+$progress_o.buttonTitle:="Stop"
+$buttonTitle_t:=$progress_o.buttonTitle  // Stop
 ```
 
 ### .stopped : Boolean
 
-`stopped` プロパティはユーザーにより停止ボタンがクリックされたかどうかを示すブール値を返します。クリックされた場合は True を、そうでなければ False を返します。これは読み出しのみ属性です。
+The `stopped` property returns a Boolean value indicating whether the user clicked the stop button. If clicked, it returns True; otherwise, it returns False. This is a read-only attribute.
 
-#### サンプルコード
+#### Sample code
 
-コンストラクターの[サンプルコード](#constructor-sample-code)を参照
+Reder to [Sample code](#constructor-sample-code) of the constructor.
 
 ### .icon : Picture
 
-`icon` プロパティを使用して進捗ダイアログに表示されるアイコン画像を設定・取得できます。
+You can set and retrieve the icon image of the progress dialog using the `icon` property.
 
-画像サイズは以下の通りです
+Preferred image sizes are as follows:
 
 - Windows OS : 80 x 40 px
 - macOS : 40 x 40 px
 
-これを超えるサイズの画像は縮小されます。
+Images larger than this size will be reduced.
 
-#### サンプルコード
+#### Sample code
 
 ```4d
 var $icon_g : Picture
@@ -120,9 +120,9 @@ $icon_g:=$progress_o.icon
 
 ### .message : Text
 
-`message` プロパティを使用して、進捗ダイアログ画面上、タイトルの下 (Windows OS) や進捗バーの下 (macOS) に表示されるメッセージテキストを設定・取得します。
+Use the `message` property to set and retrieve the message text displayed below the title (Windows OS) or below the progress bar (macOS) on the progress dialog screen.
 
-#### サンプルコード
+#### Sample code
 
 ```4d
 var $i : Integer
@@ -138,11 +138,11 @@ End for
 
 ### .stopEventListener : Text
 
-`stopEventListener` プロパティを使用して、ユーザーが停止ボタンをクリックした際に発行される Stop イベントのリスナーメソッドを設定・取得できます。
+By using `stopEventListener` property, you can set and retrieve name of the Stop event listener method which will be called when a user clicks on the Stop button in the progress dialog.
 
-イベントリスナーメソッドに関する詳細は4Dの `Progress SET ON STOP METHOD` 関数のマニュアルを参照してください。
+For details about event listener method, refer to the manual of the `Progress SET ON STOP METHOD` function.
 
-#### サンプルコード
+#### Sample code
 
 ```4d
 var $method_t : Text
@@ -155,9 +155,9 @@ $method_t:=$progress_o.stopEventListener  // "funcOnStop"
 
 ### .progress : Real
 
-`progress` プロパティを使用して進捗バーの現在値にアクセスします。値の範囲は 0 から 1 までの実数で、-1 を渡すと進行状況不定の進捗バーが表示されます。
+Use the `progress` property to access the current value of the progress bar. The value ranges from 0 to 1. Or passing -1 will display a progress bar with an undefined progress status.
 
-#### サンプルコード
+#### Sample code
 
 ```4d
 var $i : Integer
@@ -174,25 +174,25 @@ End for
 
 ### .setProgress(value : object)
 
-この関数を使用して進捗バーの値やタイトル、およびメッセージを一括して設定できます。
+You can use this function to set the progress bar value, title, and message all at once.
 
-オブジェクト型の `value` 引数には以下のプロパティを設定します：
+In the object type `value` parameter, you can set the following properties:
 
-- progress: 進捗バーの値で、値の範囲は-1または0から1です。
-- title: 進捗ダイアログのタイトルです。
-- message: 進捗ダイアログのメッセージテキストです。
+- progress: value of the progress bar. Raange of the value is form 0 to 1, or -1.
+- title: title of the progress dialog.
+- message: message text of the progress dialog.
 
-各プロパティは省略可能です。
+Each property can be omitted.
 
-#### サンプルコード
+#### Sample code
 
-コンストラクターの[サンプルコード](#constructor-sample-code)を参照
+Refer to the [Sample code](#constructor-sample-code) of the constructor.
 
 ### .start()
 
-この関数は進捗ウィンドウに新しい進捗ダイアログを追加します。同じ名前を持つダイアログがすでに存在する場合はなにも行いません。
+This function appends new progress dialog to the progress window. If the dialog is the only instance of the window, the window is displayed. If the dialog instance that has the same name already exists, this function does nothing.
 
-#### サンプルコード
+#### Sample code
 
 ```4d
 var $progress_o : cs.Progress.ProgressDialog
@@ -202,23 +202,23 @@ $progress_o.start()
 
 ### .stop()
 
-この関数は対応する進捗ダイアログを進捗ウィンドウから取り除きます。
+This function removes the corresponding progress dialog from the progress window.
 
-#### サンプルコード
+#### Sample code
 
 ```4d
 var $progress_o : cs.Progress.ProgressDialog
 $progress_o:=cs.Progress.ProgressDialog.new("LoopThroughSelection")
 $progress_o.start()
-// 作業を行う
+// Do something
 $progress_o.stop()
 ```
 
 ### .title : Text
 
-`title` プロパティを使用して、進捗ダイアログ画面上部に表示されるタイトルテキストを設定・取得します。
+You can set and retrieve the title string of the progress dialog using the `title` property.
 
-#### サンプルコード
+#### Sample code
 
 ```4d
 var $title_t : Text
@@ -227,6 +227,6 @@ $progress_o:=cs.Progress.ProgressDialog.new("LoopThroughSelection")
 $progress_o.start()
 For($i; 0; $selection_o.length-1)
     $progress_o.title:="In progress"
-    $title_t:=$progress_o.title
+    $title_t:=$progress_o.title  // In progress
 End for
 ```

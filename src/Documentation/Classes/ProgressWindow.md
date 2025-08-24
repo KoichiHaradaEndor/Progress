@@ -1,25 +1,25 @@
-<!-- ProgressWindowクラスは 4D Progress コンポーネントのラッパーメソッドで構成されていて、進捗ダイアログを内包するウィンドウの外観を制御するために使用します。 -->
-# Progressコンポーネント - ProgressWindow クラス
+<!-- The ProgressWindow class consists of wrapper methods for the 4D Progress component and is used to set appearance of the progress window. -->
+# Progress component - ProgressWindow class
 
-## 説明
+## Description
 
-このクラスは 4D Progress コンポーネントのラッパーメソッドで構成されています。このクラスを使用することで、進捗ウィンドウの外観を制御したり、エラー処理メソッドをインストールしたりすることができます。
+This class consists of wrapper methods for the 4D Progress component. Using this class allows you to configure the appearance of the progress window such as hide or show status, position of the window and fonts used in the progress dialogs. Also you can set and retrieve error event listener for 4D Progress component.
 
-本クラスは共有シングルトンクラスです。
+This is shared singleton class.
 
-## コンストラクタ
+## Constructor
 
 ### cs.Progress.ProgressWindow.me
 
-## 関数・プロパティ
+## Function, Property
 
 ### .errorEventListener : Text
 
-`errorEventListener` プロパティを使用して、4D Progressコンポーネント実行時に発生するかもしれないエラーイベントのリスナーメソッドを設定・取得できます。
+By using `errorEventListener` property, you can set and retrieve name of the Error event listener method which is called when errors are generated in 4D Progress component methods.
 
-イベントリスナーメソッドに関する詳細は4Dの `Progress SET ON ERROR METHOD` 関数のマニュアルを参照してください。
+For details about event listener method, refer to the manual of the `Progress SET ON ERROR METHOD` function.
 
-#### サンプルコード
+#### Sample code
 
 ```4d
 var $method_t : Text
@@ -31,9 +31,9 @@ $method_t:=$progressWindow_o.errorEventListener // "funcOnError"
 
 ### .hide()
 
-この関数を使用して進捗ウィンドウを非表示状態にできます。
+This function is used to hide the progress window.
 <a id="hide-sample-code"></a>
-#### サンプルコード
+#### Sample code
 
 ```4d
 var $progressWindow_o : cs.Progress.ProgressWindow
@@ -44,9 +44,9 @@ $progressWindow_o.show()
 
 ### .move(hPos : Integer; vPos : Integer)
 
-この関数は進捗ウィンドウを指定された位置に移動します。`hPos` と `vPos` にウィンドウ左上の座標を渡します。
+This function is used to move the progress window to the position designated by the `hPos` and the `vPos` parameter. Those paramters indicate top left corner of the window.
 
-#### サンプルコード
+#### Sample code
 
 ```4d
 var $progressWindow_o : cs.Progress.ProgressWindow
@@ -56,11 +56,11 @@ $progressWindow_o.setCoordinates(10;30)
 
 ### .fonts(setting : Object)
 
-この関数を使用して、進捗ダイアログのタイトル、メッセージ、およびボタンに適用されるフォント名やフォントサイズを変更します。設定はすべてのダイアログに適用されます。
+You can use this function to set font size and/or font names of the text used in progress window. The settings are applied to every progress dialogs.
 
-オブジェクトは以下の構造を持ちます：
+The structure of the `setting` parameter is as follows:
 
-|第一レベル|第二レベル|型|
+|1st Level|2nd Level|Value type|
 |:--------|:--------|:--------:|
 |title|fontSize|Integer|
 ||fontName|Text|
@@ -69,9 +69,9 @@ $progressWindow_o.setCoordinates(10;30)
 |button|fontSize|Integer|
 ||fontName|Text|
 
-フォント名やフォントサイズを変更しない場合、対応するプロパティを省略できます。第一レベルを省略した場合はフォント名とフォントサイズ両方を変更しないことを示します。
+You can omit some properties when you do not want to change them. When the first level is omitted, both font size and font name are not changed.
 
-#### サンプルコード
+#### Sample code
 
 ```4d
 var $setting_o : Object
@@ -86,8 +86,8 @@ $progressWindow_o.setGlobalAppearance($setting_o)
 
 ### .show()
 
-この関数を使用して、 `.hide()` 関数により非表示状態にされた進捗ウィンドウを表示状態にできます。
+This function is used to show the progress window which is hidden by `.hide()` function.
 
-#### サンプルコード
+#### Sample code
 
-`.hide()`の[サンプルコード](#hide-sample-code)を参照
+Refer to the [Sample code](#hide-sample-code) of the `.hide()` function.
