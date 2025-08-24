@@ -43,7 +43,7 @@ For ($i; 1; $max_l)
   $value_o.title:="Calculating"
   $value_o.message:=String($i)+" / "+String($max_l)
   $progress_o.setProgress($value_o)
-  If ($progress_o.stopped)
+  If ($progress_o.canceled)
     break
   End if 
 End for 
@@ -89,9 +89,9 @@ $progress_o.buttonTitle:="停止"
 $buttonTitle_t:=$progress_o.buttonTitle  // 停止
 ```
 
-### .stopped : Boolean
+### .canceled : Boolean
 
-`stopped` プロパティはユーザーにより停止ボタンがクリックされたかどうかを示すブール値を返します。クリックされた場合は True を、そうでなければ False を返します。これは読み出しのみ属性です。
+`canceled` プロパティはユーザーにより停止ボタンがクリックされたかどうかを示すブール値を返します。クリックされた場合は True を、そうでなければ False を返します。これは読み出しのみ属性です。
 
 #### サンプルコード
 

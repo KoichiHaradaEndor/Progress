@@ -108,12 +108,12 @@ Function set buttonTitle($title_t : Text)
 	$id_l:=$progressWindow_o._getId($name_t)
 	Progress SET BUTTON TITLE($id_l; $title_t)
 	
-Function get stopped() : Boolean
+Function get canceled() : Boolean
 	
 	var $name_t : Text
 	var $id_l : Integer
 	var $progressWindow_o : cs:C1710.ProgressWindow
-	var $stopped_b : Boolean
+	var $canceled_b : Boolean
 	
 	$name_t:=This:C1470._name
 	$progressWindow_o:=cs:C1710.ProgressWindow.me
@@ -122,8 +122,8 @@ Function get stopped() : Boolean
 	End if 
 	
 	$id_l:=$progressWindow_o._getId($name_t)
-	$stopped_b:=Progress Stopped($id_l)
-	return $stopped_b
+	$canceled_b:=Progress Stopped($id_l)
+	return $canceled_b
 	
 Function get icon() : Picture
 	

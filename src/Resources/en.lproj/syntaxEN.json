@@ -49,6 +49,17 @@
 			],
 			"Summary": ""
 		},
+		"get title()": {
+			"Syntax": "**.get title**() : Text",
+			"Params": [
+				[
+					"",
+					"Text",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
 		"set progress()": {
 			"Syntax": "**.set progress**( *progress_r* : Real )",
 			"Params": [
@@ -126,61 +137,6 @@
 			],
 			"Summary": ""
 		},
-		"set buttonTitle()": {
-			"Syntax": "**.set buttonTitle**( *title_t* : Text )",
-			"Params": [
-				[
-					"title_t",
-					"Text",
-					"->"
-				]
-			],
-			"Summary": ""
-		},
-		"get stopEventListener()": {
-			"Syntax": "**.get stopEventListener**() : Text",
-			"Params": [
-				[
-					"",
-					"Text",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"set buttonEnabled()": {
-			"Syntax": "**.set buttonEnabled**( *enabled_b* : Boolean )",
-			"Params": [
-				[
-					"enabled_b",
-					"Boolean",
-					"->"
-				]
-			],
-			"Summary": ""
-		},
-		"get title()": {
-			"Syntax": "**.get title**() : Text",
-			"Params": [
-				[
-					"",
-					"Text",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"get stopped()": {
-			"Syntax": "**.get stopped**() : Boolean",
-			"Params": [
-				[
-					"",
-					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
 		"set message()": {
 			"Syntax": "**.set message**( *message_t* : Text )",
 			"Params": [
@@ -210,6 +166,50 @@
 					"",
 					"Text",
 					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"get canceled()": {
+			"Syntax": "**.get canceled**() : Boolean",
+			"Params": [
+				[
+					"",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"set buttonTitle()": {
+			"Syntax": "**.set buttonTitle**( *title_t* : Text )",
+			"Params": [
+				[
+					"title_t",
+					"Text",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"get stopEventListener()": {
+			"Syntax": "**.get stopEventListener**() : Text",
+			"Params": [
+				[
+					"",
+					"Text",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"set buttonEnabled()": {
+			"Syntax": "**.set buttonEnabled**( *enabled_b* : Boolean )",
+			"Params": [
+				[
+					"enabled_b",
+					"Boolean",
+					"->"
 				]
 			],
 			"Summary": ""
