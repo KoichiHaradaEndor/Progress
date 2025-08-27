@@ -13,7 +13,7 @@
 
 `option` を使用して進捗ダイアログの表示に関わる設定を行うことができます。以下のプロパティを設定可能です：
 
-|プロパティ名|型|説名|
+|プロパティ名|型|説明|
 |:---------|:--|:--|
 |buttonEnabled|Boolean|停止ボタンの表示設定。デフォルトは非表示。|
 |buttonTitle|Text|停止ボタンのタイトル (Windows OSのみ有効)|
@@ -178,15 +178,60 @@ End for
 
 オブジェクト型の `value` 引数には以下のプロパティを設定します：
 
-- progress: 進捗バーの値で、値の範囲は-1または0から1です。
-- title: 進捗ダイアログのタイトルです。
-- message: 進捗ダイアログのメッセージテキストです。
+|プロパティ名|型|説明|
+|:---------|:--|:--|
+|progress|Real|進捗バーの値 (-1 または 0~1)|
+|title|Text|進捗ダイアログのメインタイトル|
+|message|Text|進捗ダイアログの詳細メッセージ|
 
 各プロパティは省略可能です。
+
+または
+
+|プロパティ名|型|説明|
+|:---------|:--|:--|
+|counter|Integer|進捗の現在値|
+|end|Integer|進捗の終了値|
+|title|Text|進捗ダイアログのメインタイトル|
+|message|Text|進捗ダイアログの詳細メッセージ|
+
+後者の場合、`message` には以下のテンプレートリテラルを指定することができます：
+
+|置き換え文字列|説明|注|
+|:---------|:--|:--|
+|"${counter}"|`value.counter`の値と置換されます|`value.counter`必須|
+|"${end}"|`value.end`の値と置換されます|`value.end`必須|
+|"${timeRemaining}"|`value.counter`と`value.end`および経過時間から計算した残り時間|`value.counter`と`value.end`必須|
 
 #### サンプルコード
 
 コンストラクターの[サンプルコード](#constructor-sample-code)を参照
+
+```4d
+var $i; $max_l : Integer
+var $value_o : Object
+var $progress_o : cs.Progress.ProgressDialog
+
+$progress_o:=cs.Progress.ProgressDialog.new("LoopThroughSelection")
+$progress_o.buttonEnabled:=True
+$progress_o.title:="Preparing..."
+$progress_o.progress:=-1
+$progress_o.start()
+
+$max_l:=100
+$value_o:={}
+$value_o.title:="Calculating"
+$value_o.end:=$max_l
+$value_o.message:="${counter} / ${end} 残り時間 : ${timeRemaining}"
+For ($i; 1; $max_l)
+  $value_o.counter:=$i
+  $progress_o.setProgress($value_o)
+  If ($progress_o.canceled)
+    break
+  End if 
+End for 
+$progress_o.stop()
+```
 
 ### .start()
 

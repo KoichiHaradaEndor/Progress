@@ -15,7 +15,8 @@
 			"test_process2",
 			"test_ProgressWindow",
 			"test_subroutine1",
-			"test_subroutine2"
+			"test_subroutine2",
+			"test_templateLiteral"
 		]
 	},
 	"trash": {}
