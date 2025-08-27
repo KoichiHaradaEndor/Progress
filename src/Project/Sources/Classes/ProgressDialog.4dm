@@ -15,6 +15,7 @@ property _title : Text
 property _message : Text
 property _icon : Picture
 property _stopEventListener : Text
+property _startTime : Integer
 
 Class constructor($name_t : Text; $options_o : Object)
 	
@@ -30,7 +31,7 @@ Class constructor($name_t : Text; $options_o : Object)
 		This:C1470._stopEventListener:=(($options_o.stopEventListener#Null:C1517) && (Value type:C1509($options_o.stopEventListener)=Is text:K8:3)) ? $options_o.stopEventListener : Null:C1517
 	End if 
 	
-	//MARK: プロパティ
+	//MARK: Properties
 	
 Function get buttonEnabled() : Boolean
 	
@@ -354,44 +355,103 @@ Function set title($title_t : Text)
 	$id_l:=$progressWindow_o._getId($name_t)
 	Progress SET TITLE($id_l; $title_t)
 	
-	//MARK: 関数
+	//MARK: Functions
 	
 Function setProgress($value_o : Object)
 	
 /**
+* Structure 1:
 * value:={
 *   progress : Real,
 *   title : Text,
 *   message : Text
 * }
+*
+* Structure 2:
+* value:={
+*   counter : Real,
+*   end : Real,
+*   title : Text,
+*   message : Text
+* }
+* in the message text, template literal is supported. 
+* ex  ${counter} / ${end}
 */
 	
-	var $name_t : Text
-	var $id_l; $type_l : Integer
-	var $progressWindow_o : cs:C1710.ProgressWindow
+	var $name_t; $message_t; $timeRemaining_t : Text
+	var $counter_b; $end_b : Boolean
+	var $counter_r; $end_r; $initialCounterRange_r; $elapsed_r; $toProcessMilliSec_r : Real
+	var $toProcessSec_l; $days_l : Integer
 	
-	This:C1470._progress:=(($value_o.progress#Null:C1517) && (Value type:C1509($value_o.progress)=Is real:K8:4)) ? $value_o.progress : Null:C1517
-	This:C1470._title:=(($value_o.title#Null:C1517) && (Value type:C1509($value_o.title)=Is text:K8:3)) ? $value_o.title : Null:C1517
-	This:C1470._message:=(($value_o.message#Null:C1517) && (Value type:C1509($value_o.message)=Is text:K8:3)) ? $value_o.message : Null:C1517
+	$counter_b:=(($value_o.counter#Null:C1517) && (Value type:C1509($value_o.counter)=Is real:K8:4))
+	$end_b:=(($value_o.end#Null:C1517) && (Value type:C1509($value_o.end)=Is real:K8:4) && ($value_o.end#0))
 	
-	$name_t:=This:C1470._name
-	$progressWindow_o:=cs:C1710.ProgressWindow.me
-	If ($progressWindow_o._has($name_t)=False:C215)
-		return 
+	// setting progress
+	Case of 
+		: ($counter_b && $end_b)  // counterとendが指定されている時
+			This:C1470.progress:=$value_o.counter/$value_o.end
+			
+		: ($value_o.progress#Null:C1517) && (Value type:C1509($value_o.progress)=Is real:K8:4)  // progressが設定されている時
+			This:C1470.progress:=$value_o.progress
+			
+	End case 
+	
+	// setting title
+	If ($value_o.title#Null:C1517) && (Value type:C1509($value_o.title)=Is text:K8:3)
+		This:C1470.title:=$value_o.title
 	End if 
 	
-	$id_l:=$progressWindow_o._getId($name_t)
-	If (OB Is defined:C1231($value_o; "progress") && (Value type:C1509($value_o.progress)=Is real:K8:4))
-		$type_l:=Value type:C1509($value_o.progress)
-		If (($type_l=Is real:K8:4) || ($type_l=Is longint:K8:6))
-			Progress SET PROGRESS($id_l; $value_o.progress)
+	// setting message
+	If ($value_o.message#Null:C1517) && (Value type:C1509($value_o.message)=Is text:K8:3)
+		
+		$message_t:=$value_o.message
+		
+		// replacing ${counter}
+		If ((Position:C15("${counter}"; $message_t)>0) && $counter_b)
+			$message_t:=Replace string:C233($message_t; "${counter}"; String:C10($value_o.counter))
 		End if 
-	End if 
-	If (OB Is defined:C1231($value_o; "title") && (Value type:C1509($value_o.title)=Is text:K8:3))
-		Progress SET TITLE($id_l; $value_o.title)
-	End if 
-	If (OB Is defined:C1231($value_o; "message") && (Value type:C1509($value_o.message)=Is text:K8:3))
-		Progress SET MESSAGE($id_l; $value_o.message)
+		
+		// replacing ${end}
+		If ((Position:C15("${end}"; $message_t)>0) && $end_b)
+			$message_t:=Replace string:C233($message_t; "${end}"; String:C10($value_o.end))
+		End if 
+		
+		// calculating and replacing ${timeRemaining}
+		If ((Position:C15("${timeRemaining}"; $message_t)>0) && $counter_b && $end_b)
+			
+			$counter_r:=$value_o.counter
+			$end_r:=$value_o.end
+			
+			If (This:C1470._startTime=Null:C1517)
+				This:C1470._startTime:=Milliseconds:C459
+			End if 
+			
+			If (This:C1470._progress=0)
+				$timeRemaining_t:=""
+			Else 
+				$initialCounterRange_r:=Round:C94($end_r*0.05; 2)
+				$elapsed_r:=Milliseconds:C459-This:C1470._startTime
+				$toProcessMilliSec_r:=Int:C8($elapsed_r*(1-This:C1470._progress)/This:C1470._progress)
+				$toProcessSec_l:=$toProcessMilliSec_r\1000
+				$days_l:=$toProcessSec_l\(60*60*24)
+				If ($days_l=0)
+					$timeRemaining_t:=String:C10(Time:C179($toProcessSec_l); HH MM SS:K7:1)
+				Else 
+					$toProcessSec_l:=$toProcessSec_l%(60*60*24)
+					$timeRemaining_t:=String:C10($days_l)+":"+String:C10(Time:C179($toProcessSec_l); HH MM SS:K7:1)
+				End if 
+				
+			End if 
+			$message_t:=Replace string:C233($message_t; "${timeRemaining}"; $timeRemaining_t)
+			
+			If ($counter_r=$end_r)
+				OB REMOVE:C1226(This:C1470; "_startTime")
+			End if 
+			
+		End if 
+		
+		This:C1470.message:=$message_t
+		
 	End if 
 	
 Function start()

@@ -178,15 +178,60 @@ You can use this function to set the progress bar value, title, and message all 
 
 In the object type `value` parameter, you can set the following properties:
 
-- progress: value of the progress bar. Raange of the value is form 0 to 1, or -1.
-- title: title of the progress dialog.
-- message: message text of the progress dialog.
+|Property Name|Value Type|Description|
+|:---------|:--|:--|
+|progress|Real|Value of progress bar (-1 or 0~1)|
+|title|Text|Title of progress dialog|
+|message|Text|Message of progress dialog|
 
-Each property can be omitted.
+or
+
+|Property Name|Value Type|Description|
+|:---------|:--|:--|
+|counter|Integer|Current value of the progress|
+|end|Integer|End value of the progress|
+|title|Text|Title of progress dialog|
+|message|Text|Message of progress dialog|
+
+each property can be omitted.
+
+In the latter case, `message` can contain following template literals:
+
+|String to replace|Description|Note|
+|:---------|:--|:--|
+|"${counter}"|to be replaced with the value of `value.counter`|`value.counter` is mandatory|
+|"${end}"|to be replaced with the value of `value.end`|`value.end` is mandatory|
+|"${timeRemaining}"|remaining time calculated based on `value.counter`, `value.end` and elapsed time|both `value.counter` and `value.end` are mandatory|
 
 #### Sample code
 
 Refer to the [Sample code](#constructor-sample-code) of the constructor.
+
+```4d
+var $i; $max_l : Integer
+var $value_o : Object
+var $progress_o : cs.Progress.ProgressDialog
+
+$progress_o:=cs.Progress.ProgressDialog.new("LoopThroughSelection")
+$progress_o.buttonEnabled:=True
+$progress_o.title:="Preparing..."
+$progress_o.progress:=-1
+$progress_o.start()
+
+$max_l:=100
+$value_o:={}
+$value_o.title:="Calculating"
+$value_o.end:=$max_l
+$value_o.message:="${counter} / ${end} Time remaining : ${timeRemaining}"
+For ($i; 1; $max_l)
+  $value_o.counter:=$i
+  $progress_o.setProgress($value_o)
+  If ($progress_o.canceled)
+    break
+  End if 
+End for 
+$progress_o.stop()
+```
 
 ### .start()
 
