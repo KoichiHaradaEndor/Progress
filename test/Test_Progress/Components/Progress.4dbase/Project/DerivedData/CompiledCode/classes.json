@@ -1,0 +1,165 @@
+{
+	"ProgressWindow": {
+		"functions": {
+			"get errorEventListener": {
+				"id": 2147483616,
+				"resultFunctionCode": 284
+			},
+			"set errorEventListener": {
+				"id": 2147483615,
+				"shared": true
+			},
+			"hide": 2147483614,
+			"move": 2147483613,
+			"fonts": 2147483612,
+			"show": 2147483611,
+			"_add": {
+				"id": 2147483610,
+				"shared": true
+			},
+			"_remove": {
+				"id": 2147483609,
+				"shared": true
+			},
+			"_has": {
+				"id": 2147483608,
+				"shared": true
+			},
+			"_getId": {
+				"id": 2147483607,
+				"shared": true
+			}
+		},
+		"properties": {
+			"_progressDialogs": {
+				"name": "",
+				"fo": 1216,
+				"className": "",
+				"componentName": "",
+				"content": {}
+			},
+			"_errorEventListener": {
+				"name": "",
+				"fo": 284,
+				"className": "",
+				"componentName": "",
+				"content": {}
+			}
+		},
+		"shared": true,
+		"singleton": true,
+		"constructorID": 2147483617
+	},
+	"ProgressDialog": {
+		"functions": {
+			"get buttonEnabled": {
+				"id": 2147483636,
+				"resultFunctionCode": 305
+			},
+			"set buttonEnabled": 2147483635,
+			"get buttonTitle": {
+				"id": 2147483634,
+				"resultFunctionCode": 284
+			},
+			"set buttonTitle": 2147483633,
+			"get canceled": {
+				"id": 2147483632,
+				"resultFunctionCode": 305
+			},
+			"get icon": {
+				"id": 2147483631,
+				"resultFunctionCode": 286
+			},
+			"set icon": 2147483630,
+			"get message": {
+				"id": 2147483629,
+				"resultFunctionCode": 284
+			},
+			"set message": 2147483628,
+			"get stopEventListener": {
+				"id": 2147483627,
+				"resultFunctionCode": 284
+			},
+			"set stopEventListener": 2147483626,
+			"get progress": {
+				"id": 2147483625,
+				"resultFunctionCode": 285
+			},
+			"set progress": 2147483624,
+			"get title": {
+				"id": 2147483623,
+				"resultFunctionCode": 284
+			},
+			"set title": 2147483622,
+			"setProgress": 2147483621,
+			"start": 2147483620,
+			"stop": 2147483619
+		},
+		"properties": {
+			"_name": {
+				"name": "",
+				"fo": 284,
+				"className": "",
+				"componentName": "",
+				"content": {}
+			},
+			"_buttonEnabled": {
+				"name": "",
+				"fo": 305,
+				"className": "",
+				"componentName": "",
+				"content": {}
+			},
+			"_buttonTitle": {
+				"name": "",
+				"fo": 284,
+				"className": "",
+				"componentName": "",
+				"content": {}
+			},
+			"_progress": {
+				"name": "",
+				"fo": 285,
+				"className": "",
+				"componentName": "",
+				"content": {}
+			},
+			"_title": {
+				"name": "",
+				"fo": 284,
+				"className": "",
+				"componentName": "",
+				"content": {}
+			},
+			"_message": {
+				"name": "",
+				"fo": 284,
+				"className": "",
+				"componentName": "",
+				"content": {}
+			},
+			"_icon": {
+				"name": "",
+				"fo": 286,
+				"className": "",
+				"componentName": "",
+				"content": {}
+			},
+			"_stopEventListener": {
+				"name": "",
+				"fo": 284,
+				"className": "",
+				"componentName": "",
+				"content": {}
+			},
+			"_startTime": {
+				"name": "",
+				"fo": 283,
+				"className": "",
+				"componentName": "",
+				"content": {}
+			}
+		},
+		"constructorID": 2147483637
+	}
+}
