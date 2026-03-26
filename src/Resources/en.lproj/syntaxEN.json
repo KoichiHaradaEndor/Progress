@@ -28,66 +28,34 @@
 		}
 	},
 	"ProgressDialog": {
-		"stop()": {
-			"Syntax": "**.stop**()",
-			"Params": [],
-			"Summary": ""
-		},
-		"start()": {
-			"Syntax": "**.start**()",
-			"Params": [],
-			"Summary": ""
-		},
-		"setProgress()": {
-			"Syntax": "**.setProgress**( *value_o* : Object )",
-			"Params": [
-				[
-					"value_o",
-					"Object",
-					"->"
-				]
-			],
-			"Summary": ""
-		},
-		"get title()": {
-			"Syntax": "**.get title**() : Text",
-			"Params": [
-				[
-					"",
-					"Text",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"set progress()": {
-			"Syntax": "**.set progress**( *progress_r* : Real )",
-			"Params": [
-				[
-					"progress_r",
-					"Real",
-					"->"
-				]
-			],
-			"Summary": ""
-		},
-		"get progress()": {
-			"Syntax": "**.get progress**() : Real",
-			"Params": [
-				[
-					"",
-					"Real",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
 		"get message()": {
 			"Syntax": "**.get message**() : Text",
 			"Params": [
 				[
 					"",
 					"Text",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"get icon()": {
+			"Syntax": "**.get icon**() : Picture",
+			"Params": [
+				[
+					"",
+					"Picture",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"get buttonEnabled()": {
+			"Syntax": "**.get buttonEnabled**() : Boolean",
+			"Params": [
+				[
+					"",
+					"Boolean",
 					"<-"
 				]
 			],
@@ -104,68 +72,13 @@
 			],
 			"Summary": ""
 		},
-		"get buttonEnabled()": {
-			"Syntax": "**.get buttonEnabled**() : Boolean",
+		"set buttonEnabled()": {
+			"Syntax": "**.set buttonEnabled**( *enabled_b* : Boolean )",
 			"Params": [
 				[
-					"",
+					"enabled_b",
 					"Boolean",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"set stopEventListener()": {
-			"Syntax": "**.set stopEventListener**( *methodName_t* : Text )",
-			"Params": [
-				[
-					"methodName_t",
-					"Text",
 					"->"
-				]
-			],
-			"Summary": ""
-		},
-		"get icon()": {
-			"Syntax": "**.get icon**() : Picture",
-			"Params": [
-				[
-					"",
-					"Picture",
-					"<-"
-				]
-			],
-			"Summary": ""
-		},
-		"set message()": {
-			"Syntax": "**.set message**( *message_t* : Text )",
-			"Params": [
-				[
-					"message_t",
-					"Text",
-					"->"
-				]
-			],
-			"Summary": ""
-		},
-		"set title()": {
-			"Syntax": "**.set title**( *title_t* : Text )",
-			"Params": [
-				[
-					"title_t",
-					"Text",
-					"->"
-				]
-			],
-			"Summary": ""
-		},
-		"get buttonTitle()": {
-			"Syntax": "**.get buttonTitle**() : Text",
-			"Params": [
-				[
-					"",
-					"Text",
-					"<-"
 				]
 			],
 			"Summary": ""
@@ -181,11 +94,33 @@
 			],
 			"Summary": ""
 		},
+		"get buttonTitle()": {
+			"Syntax": "**.get buttonTitle**() : Text",
+			"Params": [
+				[
+					"",
+					"Text",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
 		"set buttonTitle()": {
 			"Syntax": "**.set buttonTitle**( *title_t* : Text )",
 			"Params": [
 				[
 					"title_t",
+					"Text",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"set message()": {
+			"Syntax": "**.set message**( *message_t* : Text )",
+			"Params": [
+				[
+					"message_t",
 					"Text",
 					"->"
 				]
@@ -203,19 +138,122 @@
 			],
 			"Summary": ""
 		},
-		"set buttonEnabled()": {
-			"Syntax": "**.set buttonEnabled**( *enabled_b* : Boolean )",
+		"set stopEventListener()": {
+			"Syntax": "**.set stopEventListener**( *methodName_t* : Text )",
 			"Params": [
 				[
-					"enabled_b",
-					"Boolean",
+					"methodName_t",
+					"Text",
 					"->"
 				]
 			],
 			"Summary": ""
+		},
+		"get progress()": {
+			"Syntax": "**.get progress**() : Real",
+			"Params": [
+				[
+					"",
+					"Real",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"set progress()": {
+			"Syntax": "**.set progress**( *progress_r* : Real )",
+			"Params": [
+				[
+					"progress_r",
+					"Real",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"get title()": {
+			"Syntax": "**.get title**() : Text",
+			"Params": [
+				[
+					"",
+					"Text",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"set title()": {
+			"Syntax": "**.set title**( *title_t* : Text )",
+			"Params": [
+				[
+					"title_t",
+					"Text",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"setProgress()": {
+			"Syntax": "**.setProgress**( *value_o* : Object )",
+			"Params": [
+				[
+					"value_o",
+					"Object",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"start()": {
+			"Syntax": "**.start**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"stop()": {
+			"Syntax": "**.stop**()",
+			"Params": [],
+			"Summary": ""
 		}
 	},
 	"ProgressWindow": {
+		"get errorEventListener()": {
+			"Syntax": "**.get errorEventListener**() : Text",
+			"Params": [
+				[
+					"",
+					"Text",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"fonts()": {
+			"Syntax": "**.fonts**( *settings_o* : Object )",
+			"Params": [
+				[
+					"settings_o",
+					"Object",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"set errorEventListener()": {
+			"Syntax": "**.set errorEventListener**( *methodName_t* : Text )",
+			"Params": [
+				[
+					"methodName_t",
+					"Text",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"hide()": {
+			"Syntax": "**.hide**()",
+			"Params": [],
+			"Summary": ""
+		},
 		"move()": {
 			"Syntax": "**.move**( *horizontalPosition_l* : Integer; *verticalPosition_l* : Integer )",
 			"Params": [
@@ -232,47 +270,9 @@
 			],
 			"Summary": ""
 		},
-		"hide()": {
-			"Syntax": "**.hide**()",
-			"Params": [],
-			"Summary": ""
-		},
-		"set errorEventListener()": {
-			"Syntax": "**.set errorEventListener**( *methodName_t* : Text )",
-			"Params": [
-				[
-					"methodName_t",
-					"Text",
-					"->"
-				]
-			],
-			"Summary": ""
-		},
-		"fonts()": {
-			"Syntax": "**.fonts**( *settings_o* : Object )",
-			"Params": [
-				[
-					"settings_o",
-					"Object",
-					"->"
-				]
-			],
-			"Summary": ""
-		},
 		"show()": {
 			"Syntax": "**.show**()",
 			"Params": [],
-			"Summary": ""
-		},
-		"get errorEventListener()": {
-			"Syntax": "**.get errorEventListener**() : Text",
-			"Params": [
-				[
-					"",
-					"Text",
-					"<-"
-				]
-			],
 			"Summary": ""
 		}
 	}
