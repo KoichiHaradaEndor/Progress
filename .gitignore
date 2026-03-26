@@ -20,6 +20,9 @@ src/Libraries/*
 # dont need the 4d info component folder_reports
 Folder_Reports
 
+# dont need the test folder
+/test/
+
 # include the following if you want to ignore the database settings
 *.4DSettings
 
